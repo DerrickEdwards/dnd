@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Project Title</title>
+    <title>Drag And Drop Editor</title>
 
     <!-- add bootstrap stuff here -->
 
@@ -19,9 +19,40 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 
+    <!-- immediate script -->
+    <script>
+      $( function() { 
+        $( ".draggable" ).draggable({
+            grid: [ 20, 20 ],
+            revert: "invalid",
+            opacity: 0.7,
+            helper: "clone"
+          });
+        $( ".droppable" ).droppable( {
+          accept: ".outlet"
+        })
+      });
+    </script>
+
   </head>
   <body>
-      <h1>hello world - project template</h1>
+  <h2>Drag and Drop Editor Demo</h2>
+
+  <div id="componentMenu"> 
+    <div class="componentMenuTitle">Components</div>
+
+    <div class="nav buildable draggable" >Nav</div>
+    <div class="outlet buildable draggable" >Outlet</div>
+    <div class="form buildable draggable" >Form</div>
+    <div class="field buildable draggable" >Field</div>
+    <div class="layout buildable draggable" >Layout</div>
+    <div class="view buildable draggable" >View</div>
+    <div class="image buildable draggable" >Image</div>
+    <div class="text buildable draggable" >Text</div>
+    <div class="row buildable draggable" >Row</div>
+    <div class="Column buildable draggable" >Column</div>
+  </div>
+  <div class="page componentMenuTitle droppable" >Page</div>
 
   </body>
 </html>

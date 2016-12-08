@@ -1,3 +1,38 @@
 body {
-    font-family: "segoe ui light", "arial", "sans serif";
+    font-family: "segoe ui", "arial", "sans serif";
+}
+
+.draggable {
+    xcursor: move;
+}
+
+.buildable {
+    border: 1px solid black;
+    height: 50pt;
+    margin: 5pt;
+    padding: 2pt;
+    width: 50pt;
+}
+
+#componentMenu {
+    border: 2pt solid blue;
+    height: 100pt;
+    padding: 5px;
+}
+
+.componentMenuTitle {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+#componentMenu .buildable {
+    float: left;
+}
+
+.page {
+
+    border: 2pt solid blue;
+    height: 400px;
+    padding: 5px;
+
 }
