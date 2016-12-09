@@ -11,7 +11,19 @@ body {
     height: 50pt;
     margin: 5pt;
     padding: 2pt;
-    width: 50pt;
+    width: 75pt;
+}
+
+.buildable > .title {
+    float: left;
+    font-size 14pt;
+}
+
+.buildable > .icon-remove {
+    cursor: pointer;
+    font-weight: bold;
+    float: right;
+    padding: 2px;
 }
 
 #componentMenu {

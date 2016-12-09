@@ -22,16 +22,30 @@
     <!-- immediate script -->
     <script>
       $( function() { 
+
         $( ".draggable" ).draggable({
-            grid: [ 20, 20 ],
-            revert: "invalid",
-            opacity: 0.7,
-            helper: "clone"
+            grid: [ 20, 20 ],     // snap to a 20x20px grid
+            revert: "invalid",    // return to original position of not successfully dropped
+            helper: "clone",       // display a clone of the original item while it is being dragged.
+            opacity: 0.7         // set opacity of cloned helper while it is being dragged
           });
+
         $( ".droppable" ).droppable( {
-          accept: ".outlet"
-        })
-      });
+            accept: ".outlet, .nav",  // only accept droppable items with the class ".outlet", other selectors can be added
+            drop:   function(event, ui){ cloneDroppedItem( event, ui )} // call the "drop" function and pass the event and ui parameters
+          } ) // end .droppable
+
+
+      });  // end iff script functions
+        
+
+      //===============================================
+      
+      function removeItem( itemId ){
+        console.log( "removeItem() called: " + itemId );
+        $( "#" + itemId ).remove();  // remove the DOM element with the given id
+      } // end removeItem()
+
     </script>
 
   </head>
@@ -41,17 +55,29 @@
   <div id="componentMenu"> 
     <div class="componentMenuTitle">Components</div>
 
-    <div class="nav buildable draggable" >Nav</div>
-    <div class="outlet buildable draggable" >Outlet</div>
-    <div class="form buildable draggable" >Form</div>
-    <div class="field buildable draggable" >Field</div>
-    <div class="layout buildable draggable" >Layout</div>
-    <div class="view buildable draggable" >View</div>
-    <div class="image buildable draggable" >Image</div>
-    <div class="text buildable draggable" >Text</div>
-    <div class="row buildable draggable" >Row</div>
-    <div class="Column buildable draggable" >Column</div>
+    <div class="nav buildable draggable" data-item-type="nav">
+      <div class="title">Nav</div>
+      <div class="icon-remove invisible" onclick="removeItem($(this).parent().attr('id'))">X</div>
+    </div>
+
+    <div class="outlet buildable draggable" data-item-type="outlet">
+      <div class="title">Outlet</div>
+      <div class="icon-remove invisible" onclick="removeItem(this)">X</div>
+    </div>
+
+
+    <div class="form buildable draggable" data-item-type="form"><div class="title">Form</div><div class="icon-remove">X</div></div>
+    <div class="field buildable draggable" data-item-type="field" ><div class="title">Field</div><div class="icon-remove">X</div></div>
+    <div class="layout buildable draggable" data-item-type="layout" ><div class="title">Layout</div><div class="icon-remove">X</div></div>
+    <div class="view buildable draggable" data-item-type="view" ><div class="title">View</div><div class="icon-remove">X</div></div>
+    <div class="image buildable draggable" data-item-type="image" ><div class="title">Image</div><div class="icon-remove">X</div></div>
+    <div class="text buildable draggable" data-item-type="text" ><div class="title">Text</div><div class="icon-remove">X</div></div>
+    <div class="layout-row buildable draggable" data-item-type="layout-row" ><div class="title">Row</div><div class="icon-remove">X</div></div>
+    <div class="layout-column buildable draggable" data-item-type="layout-column" ><div class="title">Column</div><div class="icon-remove">X</div></div>
+
   </div>
+
+  <!-- Droppable Container -->
   <div class="page componentMenuTitle droppable" >Page</div>
 
   </body>
