@@ -14,8 +14,8 @@ function cloneDroppedItem( event, ui ){
 // Test harness for the guid32() function
 function testGuid( iterations ){
     for (i=0; i <= iterations; i++){
-        console.log( guid32() )
-    };
+        console.log( guid32() );
+    }
 } // end testGuid()
 
 // ========================================================================

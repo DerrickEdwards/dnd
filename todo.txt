@@ -1,1 +1,18 @@
-to
+
+
+develop a data structure that gives items attributes
+
+When an item has another item dropped on it, it should grow in size to accommidate the new item.
+This is made more difficult given nesting of items.
+
+Idea: 
+All of the nesting and resizing could be done in a data structure and then reflected in the DOM.  This would be much like a shadow DOM.
+A "resize" function is called on a given item which counts the number of childern, sums up their size attributes and resizes the item to be large enough to hold all of it's children. 
+The resize event is then called on that item's parent object since every parent container will have to get bigger.
+Will this actually require a shadow DOM?  How will it look on the page as everything is resizing?
+
+
+
+Assumption: 
+F or the moment dropped items can append to the parent, sorting will come later.
+
