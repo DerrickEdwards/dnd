@@ -1,5 +1,11 @@
+:root {
+    --gstars-blue:  #0000aa;
+
+}
+
+
 body {
-    font-family: "segoe ui", "arial", "sans serif";
+    font-family: "segoe ui light", "arial", "sans serif";
 }
 
 .draggable {
@@ -7,7 +13,7 @@ body {
 }
 
 .buildable {
-    border: 1px solid black;
+    border: 1px solid var( --gstars-blue );
     height: 50pt;
     margin: 5pt;
     padding: 2pt;
@@ -16,7 +22,7 @@ body {
 
 .buildable > .title {
     float: left;
-    font-size 14pt;
+    font-size: 14pt;
 }
 
 .buildable > .icon-remove {
@@ -27,7 +33,7 @@ body {
 }
 
 #componentMenu {
-    border: 2pt solid blue;
+    border: 2pt solid var( --gstars-blue );
     height: 100pt;
     padding: 5px;
 }
@@ -43,7 +49,7 @@ body {
 
 .page {
 
-    border: 2pt solid blue;
+    border: 2pt solid var( --gstars-blue );
     height: 400px;
     padding: 5px;
 
