@@ -17,7 +17,7 @@ body {
 
 .buildable {
     border: 1px solid var( --gstars-blue );
-    height: 20pt;
+    height: 40pt;
     margin: 5pt;
     padding: 2pt;
     width: 75pt;

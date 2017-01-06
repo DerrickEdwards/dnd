@@ -24,11 +24,19 @@
       $( function() { 
 
         $( ".draggable" ).draggable({
-            grid: [ 20, 20 ],     // snap to a 20x20px grid
-            revert: "invalid",    // return to original position of not successfully dropped
+            handle: ".title",
             helper: "clone",      // display a clone of the original item while it is being dragged.
-            opacity: 0.7          // set opacity of cloned helper while it is being dragged
+            grid: [ 20, 20 ],     // snap to a 20x20px grid
+            opacity: 0.7,         // set opacity of cloned helper while it is being dragged
+            revert: "invalid"     // return to original position of not successfully dropped
           });
+
+        $( ".resizable" ).resizable({
+            grid: [ 20, 20 ]     // snap to a 20x20px grid
+
+          });
+
+        // $( "div" ).disableSelection();
 
         $( ".layout-row" ).draggable( {
             stop : function( event, ui ){ } // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< START HERE
@@ -73,25 +81,25 @@
   <div id="componentMenu"> 
     <div class="componentMenuTitle">Components</div>
 
-    <div class="nav buildable draggable" data-item-type="nav">
+    <div class="nav buildable draggable resizable" data-item-type="nav">
       <div class="title">Nav</div>
       <div class="icon-remove invisible" onclick="removeItem($(this).parent().attr('id'))">X</div>
     </div>
 
-    <div class="outlet buildable draggable" data-item-type="outlet">
+    <div class="outlet buildable draggable resizable" data-item-type="outlet">
       <div class="title">Outlet</div>
       <div class="icon-remove invisible" onclick="removeItem($(this).parent().attr('id'))">X</div>
     </div>
 
 
-    <div class="form buildable draggable"   data-item-type="form"><div class="title">Form</div><div class="icon-remove">X</div></div>
-    <div class="field buildable draggable"  data-item-type="field"><div class="title">Field</div><div class="icon-remove">X</div></div>
-    <div class="layout buildable draggable" data-item-type="layout"><div class="title">Layout</div><div class="icon-remove">X</div></div>
-    <div class="view buildable draggable"   data-item-type="view"><div class="title">View</div><div class="icon-remove">X</div></div>
-    <div class="image buildable draggable"  data-item-type="image"><div class="title">Image</div><div class="icon-remove">X</div></div>
-    <div class="text buildable draggable"   data-item-type="text"><div class="title">Text</div><div class="icon-remove">X</div></div>
-    <div class="layout-row buildable draggable droppable" data-item-type="layout-row" ><div class="title">Row</div><div class="icon-remove">X</div></div>
-    <div class="layout-column buildable draggable droppable" data-item-type="layout-column" ><div class="title">Column</div><div class="icon-remove">X</div></div>
+    <div class="form buildable draggable resizable"   data-item-type="form"><div class="title">Form</div><div class="icon-remove">X</div></div>
+    <div class="field buildable draggable resizable"  data-item-type="field"><div class="title">Field</div><div class="icon-remove">X</div></div>
+    <div class="layout buildable draggable resizable" data-item-type="layout"><div class="title">Layout</div><div class="icon-remove">X</div></div>
+    <div class="view buildable draggable resizable"   data-item-type="view"><div class="title">View</div><div class="icon-remove">X</div></div>
+    <div class="image buildable draggable resizable"  data-item-type="image"><div class="title">Image</div><div class="icon-remove">X</div></div>
+    <div class="text buildable draggable resizable"   data-item-type="text"><div class="title">Text</div><div class="icon-remove">X</div></div>
+    <div class="layout-row buildable draggable resizable droppable" data-item-type="layout-row" ><div class="title">Row</div><div class="icon-remove">X</div></div>
+    <div class="layout-column buildable draggable resizable droppable" data-item-type="layout-column" ><div class="title">Column</div><div class="icon-remove">X</div></div>
 
   </div>
 
