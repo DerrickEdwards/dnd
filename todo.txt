@@ -14,5 +14,5 @@ Will this actually require a shadow DOM?  How will it look on the page as everyt
 
 
 Assumption: 
-F or the moment dropped items can append to the parent, sorting will come later.
+For the moment dropped items can append to the parent, sorting will come later.
 

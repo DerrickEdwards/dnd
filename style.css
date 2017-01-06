@@ -1,5 +1,8 @@
 :root {
-    --gstars-blue:  #0000aa;
+    --gstars-blue:          #0000aa;
+    --displayHeight:        800px;
+    --componentMenuWidth:   20%;
+    --workspaceWidth:       calc( 100% - var(--componentMenuWidth) - 10% ); /* compute to be remailing space minus 10% to avoid wrapping */
 
 }
 
@@ -33,9 +36,11 @@ body {
 }
 
 #componentMenu {
-    border: 2pt solid var( --gstars-blue );
-    height: 100pt;
-    padding: 5px;
+    border:     2pt solid var( --gstars-blue );
+    display:    inline-block;
+    height:     var( --displayHeight );
+    padding:    5px;
+    width:      var( --componentMenuWidth );
 }
 
 .componentMenuTitle {
@@ -47,10 +52,12 @@ body {
     float: left;
 }
 
-.page {
+.workspace {
 
-    border: 2pt solid var( --gstars-blue );
-    height: 400px;
-    padding: 5px;
+    border:     2pt solid var( --gstars-blue );
+    display:    inline-block;
+    height:     var( --displayHeight );
+    padding:    5px;
+    width:      var( --workspaceWidth );
 
 }

@@ -26,17 +26,17 @@
         $( ".draggable" ).draggable({
             grid: [ 20, 20 ],     // snap to a 20x20px grid
             revert: "invalid",    // return to original position of not successfully dropped
-            helper: "clone",       // display a clone of the original item while it is being dragged.
-            opacity: 0.7         // set opacity of cloned helper while it is being dragged
+            helper: "clone",      // display a clone of the original item while it is being dragged.
+            opacity: 0.7          // set opacity of cloned helper while it is being dragged
           });
 
         $( ".layout-row" ).draggable( {
-            stop : function( event, ui ){ } // START HERE
+            stop : function( event, ui ){ } // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< START HERE
 
         })
 
-        $( ".page" ).droppable( {
-            accept: ".layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
+        $( ".workspace" ).droppable( {
+            accept: ".layout-row, .layout-column",  // only accept droppable items with these classes, other selectors can be added
             drop:   function(event, ui){ cloneDroppedItem( event, ui )} // call the "drop" function and pass the event and ui parameters
           } ) // end .droppable
 
@@ -84,19 +84,19 @@
     </div>
 
 
-    <div class="form buildable draggable" data-item-type="form"><div class="title">Form</div><div class="icon-remove">X</div></div>
-    <div class="field buildable draggable" data-item-type="field" ><div class="title">Field</div><div class="icon-remove">X</div></div>
-    <div class="layout buildable draggable" data-item-type="layout" ><div class="title">Layout</div><div class="icon-remove">X</div></div>
-    <div class="view buildable draggable" data-item-type="view" ><div class="title">View</div><div class="icon-remove">X</div></div>
-    <div class="image buildable draggable" data-item-type="image" ><div class="title">Image</div><div class="icon-remove">X</div></div>
-    <div class="text buildable draggable" data-item-type="text" ><div class="title">Text</div><div class="icon-remove">X</div></div>
+    <div class="form buildable draggable"   data-item-type="form"><div class="title">Form</div><div class="icon-remove">X</div></div>
+    <div class="field buildable draggable"  data-item-type="field"><div class="title">Field</div><div class="icon-remove">X</div></div>
+    <div class="layout buildable draggable" data-item-type="layout"><div class="title">Layout</div><div class="icon-remove">X</div></div>
+    <div class="view buildable draggable"   data-item-type="view"><div class="title">View</div><div class="icon-remove">X</div></div>
+    <div class="image buildable draggable"  data-item-type="image"><div class="title">Image</div><div class="icon-remove">X</div></div>
+    <div class="text buildable draggable"   data-item-type="text"><div class="title">Text</div><div class="icon-remove">X</div></div>
     <div class="layout-row buildable draggable droppable" data-item-type="layout-row" ><div class="title">Row</div><div class="icon-remove">X</div></div>
     <div class="layout-column buildable draggable droppable" data-item-type="layout-column" ><div class="title">Column</div><div class="icon-remove">X</div></div>
 
   </div>
 
   <!-- Droppable Container -->
-  <div class="page componentMenuTitle droppable" >Page</div>
+  <div class="workspace componentMenuTitle droppable" >Workspace</div>
 
   </body>
 </html>
