@@ -21,7 +21,7 @@
     <script>
       $( function() { 
 
-        $( ".draggable" ).draggable({
+        $( ".buildable" ).draggable({
             handle: ".componentTitle",
             helper: "clone",      // display a clone of the original item while it is being dragged.
             grid: [ 20, 20 ],     // snap to a 20x20px grid
@@ -29,7 +29,7 @@
             revert: "invalid"     // return to original position of not successfully dropped
           });
 
-        $( ".resizable" ).resizable({
+        $( ".buildable" ).resizable({
             grid: [ 20, 20 ]      // snap to a 20x20px grid
           });
 
@@ -88,14 +88,14 @@
     </div>
 
 
-    <div class="layout-row buildable draggable resizable" data-item-type="layout-row" ><div class="componentTitle">Row</div><div class="icon-remove">X</div></div>
-    <div class="layout-column buildable draggable resizable" data-item-type="layout-column" ><div class="componentTitle">Column</div><div class="icon-remove">X</div></div>
-    <div class="form buildable draggable resizable"   data-item-type="form"><div class="componentTitle">Form</div><div class="icon-remove">X</div></div>
-    <div class="field buildable draggable resizable"  data-item-type="field"><div class="componentTitle">Field</div><div class="icon-remove">X</div></div>
-    <div class="layout buildable draggable resizable" data-item-type="layout"><div class="componentTitle">Layout</div><div class="icon-remove">X</div></div>
-    <div class="view buildable draggable resizable"   data-item-type="view"><div class="componentTitle">View</div><div class="icon-remove">X</div></div>
-    <div class="image buildable draggable resizable"  data-item-type="image"><div class="componentTitle">Image</div><div class="icon-remove">X</div></div>
-    <div class="text buildable draggable resizable"   data-item-type="text"><div class="componentTitle">Text</div><div class="icon-remove">X</div></div>
+    <div class="layout-row buildable" data-item-type="layout-row" ><div class="componentTitle">Row</div><div class="icon-remove">X</div></div>
+    <div class="layout-column buildable" data-item-type="layout-column" ><div class="componentTitle">Column</div><div class="icon-remove">X</div></div>
+    <div class="form buildable"   data-item-type="form"><div class="componentTitle">Form</div><div class="icon-remove">X</div></div>
+    <div class="field buildable"  data-item-type="field"><div class="componentTitle">Field</div><div class="icon-remove">X</div></div>
+    <div class="layout buildable" data-item-type="layout"><div class="componentTitle">Layout</div><div class="icon-remove">X</div></div>
+    <div class="view buildable"   data-item-type="view"><div class="componentTitle">View</div><div class="icon-remove">X</div></div>
+    <div class="image buildable"  data-item-type="image"><div class="componentTitle">Image</div><div class="icon-remove">X</div></div>
+    <div class="text buildable"   data-item-type="text"><div class="componentTitle">Text</div><div class="icon-remove">X</div></div>
 
   </div>
 

@@ -5,13 +5,11 @@
 
 function handleDroppedItem( event, ui ){ 
 
-    var $clone = $(ui.draggable).clone( true, true );    // [withDataAndEvents, deepWithDataAndEvents]
+    var $clone = $(ui.helper).clone();  //  clone the helper object.  ui.helper has position attributes 
+    $clone.removeClass( "buildable" );  // turn off the buildable class
+    $clone.addClass( "placedItem" );    // make the object one this IS placed item instead of one that CAN be placed
     
-    
-    $clone.attr( "id", guid32() );                       // give the cloned item a new GUID
-
-    $clone.removeClass( "draggable" );
-    $clone.removeClass( "resizable" );
+    $clone.attr( "id", guid32() );      // give the cloned item a new GUID
 
 // >>>>>>>>>>>>>>>>>>>>>>>>
 //  this section not working.  cannot drag or resize after drop
@@ -19,14 +17,14 @@ function handleDroppedItem( event, ui ){
 
     $clone.draggable({
         handle: ".componentTitle",
-        helper: "clone",      // display a clone of the original item while it is being dragged.
+        helper: "original",   // drag the original around and not a clone since this is a placed object.
         grid: [ 20, 20 ],     // snap to a 20x20px grid
         opacity: 0.7,         // set opacity of cloned helper while it is being dragged
         revert: "invalid"     // return to original position of not successfully dropped
         });
 
     $clone.resizable({
-        grid: [ 20, 20 ]     // snap to a 20x20px grid
+        // grid: [ 20, 20 ]     // snap to a 20x20px grid
         });
                     
     $(this).append( $clone );

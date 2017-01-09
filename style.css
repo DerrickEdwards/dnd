@@ -12,7 +12,7 @@ body {
 }
 
 
-.buildable {
+.buildable, .placedItem {
     border: 1px solid var( --gstars-blue );
     height: 40pt;
     margin: 5pt;
