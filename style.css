@@ -11,9 +11,6 @@ body {
     font-family: "segoe ui light", "arial", "sans serif";
 }
 
-.draggable {
-   
-}
 
 .buildable {
     border: 1px solid var( --gstars-blue );
@@ -23,12 +20,13 @@ body {
     width: 75pt;
 }
 
-.buildable > .title {
-    float: left;
-    font-size: 14pt;
+.componentTitle {
+    float:          left;
+    font-size:      14pt;
+    font-weight:    normal;
 }
 
-.buildable > .icon-remove {
+.icon-remove {
     cursor: pointer;
     font-weight: bold;
     float: right;
@@ -52,12 +50,10 @@ body {
     float: left;
 }
 
-.workspace {
-
+#workspace {
     border:     2pt solid var( --gstars-blue );
     display:    inline-block;
     height:     var( --displayHeight );
     padding:    5px;
     width:      var( --workspaceWidth );
-
 }

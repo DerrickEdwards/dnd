@@ -2,12 +2,39 @@
 
 // ========================================================================
 // call this function when an item is successfully dropped
-function cloneDroppedItem( event, ui ){     
-        var clone = $(ui.draggable).clone();
-        clone.appendTo( event.target );     // append a clone of the dragged element to the target droppable container
-        $( clone ).attr( "id", guid32() );  // give the cloned item a new GUID
-        itemAdded( $( clone ).attr( "id" ));           // log the new item
-} // end cloneDroppedItem()
+
+function handleDroppedItem( event, ui ){ 
+
+    var $clone = $(ui.draggable).clone( true, true );    // [withDataAndEvents, deepWithDataAndEvents]
+    
+    
+    $clone.attr( "id", guid32() );                       // give the cloned item a new GUID
+
+    $clone.removeClass( "draggable" );
+    $clone.removeClass( "resizable" );
+
+// >>>>>>>>>>>>>>>>>>>>>>>>
+//  this section not working.  cannot drag or resize after drop
+// >>>>>>>>>>>>>>>>>>>>>>>
+
+    $clone.draggable({
+        handle: ".componentTitle",
+        helper: "clone",      // display a clone of the original item while it is being dragged.
+        grid: [ 20, 20 ],     // snap to a 20x20px grid
+        opacity: 0.7,         // set opacity of cloned helper while it is being dragged
+        revert: "invalid"     // return to original position of not successfully dropped
+        });
+
+    $clone.resizable({
+        grid: [ 20, 20 ]     // snap to a 20x20px grid
+        });
+                    
+    $(this).append( $clone );
+    // $clone.appendTo( event.target );                  // append a clone of the dragged element to the target droppable container
+
+    itemAdded( $clone.attr( "id" ));        // log the new item
+
+} // end handleDropppedItem()
 
 
 // ========================================================================
@@ -30,7 +57,7 @@ function guid32(){
         guid = guid + CHARACTERS[ randomIndexValue ];
     } // end while
 
-    return guid; 
+    return guid;
 
 } // end guid()
 
