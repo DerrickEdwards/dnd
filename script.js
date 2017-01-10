@@ -5,8 +5,6 @@
 
 function handleDroppedItem( event, ui ){ 
 
-    
-
     var $clone = $(ui.helper).clone();  //  clone the helper object.  ui.helper has position attributes 
     
     // if the dropped item is a "buildable" item being dropped for the first time, 
@@ -25,11 +23,11 @@ function handleDroppedItem( event, ui ){
             grid: [ 20, 20 ],     // snap to a 20x20px grid
             opacity: 0.7,         // set opacity of cloned helper while it is being dragged
             revert: "invalid"     // return to original position of not successfully dropped
-            });
+        });
 
         $clone.resizable({
-            // grid: [ 20, 20 ]     // snap to a 20x20px grid
-            });
+            grid: [ 20, 20 ]     // snap to a 20x20px grid
+        });
 
         $(this).append( $clone );
         // $clone.appendTo( event.target );     // append a clone of the dragged element to the target droppable container

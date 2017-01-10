@@ -29,9 +29,9 @@
             revert: "invalid"     // return to original position of not successfully dropped
           });
 
-        $( ".buildable" ).resizable({
-            grid: [ 20, 20 ]      // snap to a 20x20px grid
-          });
+        // $( ".buildable" ).resizable({
+        //     grid: [ 20, 20 ]      // snap to a 20x20px grid
+        //   });
 
         // $( "div" ).disableSelection();
         // $( ".layout-row" ).draggable( {
@@ -77,12 +77,12 @@
   <div id="componentMenu"> 
     <div class="componentMenuTitle">Components</div>
 
-    <div class="nav buildable draggable resizable" data-item-type="nav">
+    <div class="nav buildable" data-item-type="nav">
       <div class="componentTitle">Nav</div>
       <div class="icon-remove invisible" onclick="removeItem($(this).parent().attr('id'))">X</div>
     </div>
 
-    <div class="outlet buildable draggable resizable" data-item-type="outlet">
+    <div class="outlet buildable" data-item-type="outlet">
       <div class="componentTitle">Outlet</div>
       <div class="icon-remove invisible" onclick="removeItem($(this).parent().attr('id'))">X</div>
     </div>
@@ -102,7 +102,6 @@
   <!-- Droppable Container -->
   <div id="workspace" class="droppable">
     <div class="componentMenuTitle">Workspace</div>
-    <div class="layout-row buildable draggable resizable" data-item-type="layout-row" ><div class="componentTitle">Row</div><div class="icon-remove">X</div></div>
   </div>
 
   </body>
