@@ -21,53 +21,10 @@
     <script>
       $( function() { 
 
-        $( ".buildable" ).draggable({
-            handle: ".componentTitle",
-            helper: "clone",      // display a clone of the original item while it is being dragged.
-            grid: [ 20, 20 ],     // snap to a 20x20px grid
-            opacity: 0.7,         // set opacity of cloned helper while it is being dragged
-            revert: "invalid"     // return to original position of not successfully dropped
-          });
-
-        // $( ".buildable" ).resizable({
-        //     grid: [ 20, 20 ]      // snap to a 20x20px grid
-        //   });
-
-        // $( "div" ).disableSelection();
-        // $( ".layout-row" ).draggable( {
-        //     stop : function( event, ui ){ } // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< START HERE
-        // })
-
-        $( "#workspace" ).droppable( {
-            accept: ".layout-row, .layout-column",  // only accept droppable items with these classes, other selectors can be added
-            drop:   handleDroppedItem
-          } ) // end .droppable
-
-          // >>>>>>>>>>>>>>>>>>>>>>>>>> leave these turned off until the redraggable issue is fixed
-        // $( ".layout-row" ).droppable( {
-        //     accept: ".outlet, .nav, .layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
-        //     drop:   function(event, ui){ 
-        //       console.log( "layout-row dropped" );
-        //       cloneDroppedItem( event, ui );                         // call the "drop" function and pass the event and ui parameters           
-        //     } 
-        //   } ) // end .droppable
-
-        // $( ".layout-column" ).droppable( {
-        //     accept: ".outlet, .nav, .layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
-        //     drop:   function(event, ui){ cloneDroppedItem( event, ui )} // call the "drop" function and pass the event and ui parameters
-        //   } ) // end .droppable
-
+        initComponentsInMenu();
 
       });  // end iff script functions
         
-
-      //===============================================
-      
-      function removeItem( itemId ){
-        console.log( "removeItem() called: " + itemId );
-        $( "#" + itemId ).remove();  // remove the DOM element with the given id
-      } // end removeItem()
-
     </script>
 
   </head>

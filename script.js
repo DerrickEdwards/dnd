@@ -1,7 +1,60 @@
 
+// ============================================================================
+// ============================================================================
+function initComponentsInMenu(){
+    console.log( "initComponentsInMenu() called");
 
-// ========================================================================
+    $( ".buildable" ).draggable({
+        handle: ".componentTitle",
+        helper: "clone",      // display a clone of the original item while it is being dragged.
+        grid: [ 20, 20 ],     // snap to a 20x20px grid
+        opacity: 0.7,         // set opacity of cloned helper while it is being dragged
+        revert: "invalid"     // return to original position of not successfully dropped
+        });
+
+    // $( ".buildable" ).resizable({
+    //     grid: [ 20, 20 ]      // snap to a 20x20px grid
+    //   });
+
+    // $( "div" ).disableSelection();
+    // $( ".layout-row" ).draggable( {
+    //     stop : function( event, ui ){ } 
+    // })
+
+    $( "#workspace" ).droppable( {
+        accept: ".layout-row, .layout-column",  // only accept droppable items with these classes, other selectors can be added
+        drop:   handleDroppedItem
+        } ) // end .droppable
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>>> leave these turned off until the redraggable issue is fixed
+    // $( ".layout-row" ).droppable( {
+    //     accept: ".outlet, .nav, .layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
+    //     drop:   function(event, ui){ 
+    //       console.log( "layout-row dropped" );
+    //       cloneDroppedItem( event, ui );                         // call the "drop" function and pass the event and ui parameters           
+    //     } 
+    //   } ) // end .droppable
+
+    // $( ".layout-column" ).droppable( {
+    //     accept: ".outlet, .nav, .layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
+    //     drop:   function(event, ui){ cloneDroppedItem( event, ui )} // call the "drop" function and pass the event and ui parameters
+    //   } ) // end .droppable
+
+} // end initCompoentsInMenu()
+
+
+// ============================================================================
+// ============================================================================
+
+function removeItem( itemId ){
+    console.log( "removeItem() called: " + itemId );
+    $( "#" + itemId ).remove();  // remove the DOM element with the given id
+} // end removeItem()
+    
+    
+// ============================================================================
 // call this function when an item is successfully dropped
+// ============================================================================
 
 function handleDroppedItem( event, ui ){ 
 
@@ -44,8 +97,10 @@ function handleDroppedItem( event, ui ){
 } // end handleDropppedItem()
 
 
-// ========================================================================
+// ============================================================================
 // Test harness for the guid32() function
+// ============================================================================
+
 function testGuid( iterations ){
     for (i=0; i <= iterations; i++){
         console.log( guid32() );
@@ -54,6 +109,8 @@ function testGuid( iterations ){
 
 // ========================================================================
 // returns a 32 character hex value
+// ============================================================================
+
 function guid32(){
     var   guidLength = 32;
     var   CHARACTERS = "0123456789abcdef"; // 16 characters, with index values of [0] to [15]
@@ -71,6 +128,8 @@ function guid32(){
 
 // ========================================================================
 // called AFTER an item has been added to the DOM
+// ============================================================================
+
 function itemAdded( itemId ){
 
 // this function will add the new item to the configuration data model
@@ -83,6 +142,8 @@ console.log( `Item added, guid ID: ${ itemId }` );
 
 // ========================================================================
 // called AFTER an item has been removed from the DOM
+// ============================================================================
+
 function itemRemoved( itemId ){
 
 // this function will remove an item from the configuration data model
