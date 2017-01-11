@@ -1,5 +1,16 @@
 
 
+
+
+=== Wednesday January 11
+The removeItem() function is not finding the id of the $clone item passed to it so that it can be logged.
+    I am not sure what the JQuery object being passed ($clone) really is, but it seems from the debugger that the html element is child of the object so 
+    it may be necessary to do a $clone.find( xxxx ), where "xxxx" is something, to find the element with and then the id within the object.
+    Look at the "item" being passed into the function and you will see that the "id" is there but seems to be part of the first child.
+
+
+=== future stuff ===
+
 develop a data structure that gives items attributes
 
 When an item has another item dropped on it, it should grow in size to accommidate the new item.

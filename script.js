@@ -12,21 +12,13 @@ function initComponentsInMenu(){
         revert: "invalid"     // return to original position of not successfully dropped
         });
 
-    // $( ".buildable" ).resizable({
-    //     grid: [ 20, 20 ]      // snap to a 20x20px grid
-    //   });
-
-    // $( "div" ).disableSelection();
-    // $( ".layout-row" ).draggable( {
-    //     stop : function( event, ui ){ } 
-    // })
 
     $( "#workspace" ).droppable( {
         accept: ".layout-row, .layout-column",  // only accept droppable items with these classes, other selectors can be added
         drop:   handleDroppedItem
         } ) // end .droppable
 
-        // >>>>>>>>>>>>>>>>>>>>>>>>>> leave these turned off until the redraggable issue is fixed
+    // >>>>>>>>>>>>>>>>>>>>>>>>>> leave these turned off until the redraggable issue is fixed
     // $( ".layout-row" ).droppable( {
     //     accept: ".outlet, .nav, .layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
     //     drop:   function(event, ui){ 
@@ -46,9 +38,9 @@ function initComponentsInMenu(){
 // ============================================================================
 // ============================================================================
 
-function removeItem( itemId ){
-    console.log( "removeItem() called: " + itemId );
-    $( "#" + itemId ).remove();  // remove the DOM element with the given id
+function removeItem( item ){
+    console.log( "removeItem() called: " + item.id );
+    $( item ).remove();  // remove the DOM element with the given id
 } // end removeItem()
     
     
@@ -66,11 +58,11 @@ function handleDroppedItem( event, ui ){
     if ($clone.hasClass( "buildable" )){
 
         $clone.removeClass( "buildable" );  // turn off the buildable class
-        $clone.addClass( "placedItem" );    // make the object one this IS placed item instead of one that CAN be placed
+        $clone.addClass( "placedItem" );    // make the object one that IS placed item instead of one that CAN be placed
         
         $clone.attr( "id", guid32() );      // give the cloned item a new GUID
         
-        $clone.draggable({
+        $clone.draggable({                  // make it draggable
             handle: ".componentTitle",
             helper: "original",   // drag the original around and not a clone since this is a placed object.
             grid: [ 20, 20 ],     // snap to a 20x20px grid
@@ -78,9 +70,14 @@ function handleDroppedItem( event, ui ){
             revert: "invalid"     // return to original position of not successfully dropped
         });
 
-        $clone.resizable({
-            grid: [ 20, 20 ]     // snap to a 20x20px grid
+        $clone.find( ".icon-remove" ).click( function(){ removeItem( $clone ) });  // add event handler to the "remove item" icon
+
+        $clone.resizable({      // make it resizable
+            grid: [ 20, 20 ]    // snap to a 20x20px grid
         });
+
+
+
 
         $(this).append( $clone );
         // $clone.appendTo( event.target );     // append a clone of the dragged element to the target droppable container
@@ -88,11 +85,12 @@ function handleDroppedItem( event, ui ){
 
     } // end if buildable
 
-    
+
+    // if the dropped item is a "placedItem" do nothing for the moment
     if ( $clone.hasClass( "placedItem" )){
 
-
     } // end if placedItem
+
 
 } // end handleDropppedItem()
 
