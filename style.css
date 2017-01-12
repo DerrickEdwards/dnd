@@ -1,28 +1,70 @@
 :root {
     --gstars-blue:          #0000aa;
-    --displayHeight:        800px;
-    --componentMenuWidth:   20%;
-    --workspaceWidth:       calc( 100% - var(--componentMenuWidth) - 10% ); /* compute to be remailing space minus 10% to avoid wrapping */
-
+    --pageHeight:           800px;
+    --pageWidth:            auto;
+    --menuWidth:            200px;
+    --workspaceWidth:       calc( 100% - var(--paletteWidth) - 10% ); /* compute to be remailing space minus 10% to avoid wrapping */
+    --paletteWidth:         150px;
 }
-
 
 body {
     font-family: "segoe ui light", "arial", "sans serif";
 }
 
+#page {
+    border:     2px solid black;
+    height:     var( --pageHeight );
+    padding:    5px;
+    width:      100%;
+    min-width:  200px;
+}
+
+#menu {
+    border:     1px dotted blue;
+    display:    inline-block;
+    height:     100%;
+    padding:    5px;
+    width:      var( --menuWidth );
+}
+
+#menuTitle {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+#workspace {
+    border:     2pt dashed var( --gstars-blue );
+    display:    inline-block;
+    height:    100%;
+    padding:    5px;
+    width:      var( --workspaceWidth );
+    min-width:  200px;
+}
+
+#workspaceTitle {
+    font-size: 14pt;
+    font-weight: bold;
+}
 
 .buildable, .placedItem {
     border: 1px solid var( --gstars-blue );
-    height: 40pt;
+    height: 20pt;
     margin: 5pt;
     padding: 2pt;
     width: 75pt;
 }
 
+.palette {
+    border:     1pt solid var( --gstars-blue );
+    display:    inline-block;
+    height:     auto;
+    padding:    5px;
+    width:      80%;
+}
+
 .componentTitle {
     float:          left;
-    font-size:      14pt;
+    font-size:      10pt;
     font-weight:    normal;
 }
 
@@ -33,27 +75,7 @@ body {
     padding: 2px;
 }
 
-#componentMenu {
-    border:     2pt solid var( --gstars-blue );
+
+#menu .buildable {
     display:    inline-block;
-    height:     var( --displayHeight );
-    padding:    5px;
-    width:      var( --componentMenuWidth );
-}
-
-.componentMenuTitle {
-    font-size: 14pt;
-    font-weight: bold;
-}
-
-#componentMenu .buildable {
-    float: left;
-}
-
-#workspace {
-    border:     2pt solid var( --gstars-blue );
-    display:    inline-block;
-    height:     var( --displayHeight );
-    padding:    5px;
-    width:      var( --workspaceWidth );
 }

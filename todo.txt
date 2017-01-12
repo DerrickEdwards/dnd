@@ -9,6 +9,12 @@ The removeItem() function is not finding the id of the $clone item passed to it 
     Look at the "item" being passed into the function and you will see that the "id" is there but seems to be part of the first child.
 
 
+v=== very next thing
+
+When the component is dropped change it to be the workspace object.  the components on the palette are just supposed to be representations of the objects.  
+For example, the components in this first phase should represent layout objects such as single col rows, double column rows, x-col rows.  
+Later there will be an actual components list to drop into the cells in the rows.
+
 === future stuff ===
 
 develop a data structure that gives items attributes

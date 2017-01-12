@@ -1,65 +1,91 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Drag And Drop Editor</title>
+<head>
+<meta charset="utf-8">
+<title>Drag And Drop Editor</title>
 
-    <!-- add bootstrap stuff here -->
+<!-- add bootstrap stuff here -->
 
-    <!-- jqeury should be downloaded from the JQuery UI Download Builder   -->
-    <!--  and the contents placed in a "jquery" folder at the project root -->
-    <!-- http://jqueryui.com/download/ -->
-    <link rel="stylesheet" href="jquery/jquery-ui.min.css">
-    <script src="jquery/external/jquery/jquery.js"></script>
-    <script src="jquery/jquery-ui.min.js"></script>
+<!-- jqeury should be downloaded from the JQuery UI Download Builder   -->
+<!--  and the contents placed in a "jquery" folder at the project root -->
+<!-- http://jqueryui.com/download/ -->
+<link rel="stylesheet" href="jquery/jquery-ui.min.css">
+<script src="jquery/external/jquery/jquery.js"></script>
+<script src="jquery/jquery-ui.min.js"></script>
 
-    <!-- Local project specific style sheet and script file -->
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+<!-- Local project specific style sheet and script file -->
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 
-    <!-- immediate script -->
-    <script>
-      $( function() { 
+<!-- immediate script -->
+<script>
+    $( function() { 
 
-        initComponentsInMenu();
+    initComponentsInMenu();
 
-      });  // end iff script functions
-        
-    </script>
+    });  // end iff script functions
+    
+</script>
 
-  </head>
-  <body>
-  <h2>Drag and Drop Editor Demo</h2>
+</head>
 
-  <div id="componentMenu"> 
-    <div class="componentMenuTitle">Components</div>
+<body>
+<div id="page">
 
-    <div class="nav buildable" data-item-type="nav">
-      <div class="componentTitle">Nav</div>
-      <div class="icon-remove invisible" onclick="removeItem($(this).parent().attr('id'))">X</div>
-    </div>
+    <!-- === MENU === -->
+    <div id="menu"> 
 
-    <div class="outlet buildable" data-item-type="outlet">
-      <div class="componentTitle">Outlet</div>
-      <div class="icon-remove">X</div>
-    </div>
+        <div id="menuTitle">Drag and Drop Editor Demo</div>
+
+        <!-- LAYOUT PALETTE -->
+        <div id="layoutPalette" class="palette"> 
+
+            <div class="paletteTitle">Layout Palette</div>
+
+            <div class="layout-row buildable" data-item-type="layout-row" ><div class="componentTitle">Row</div><div class="icon-remove">X</div></div>
+            <div class="layout-column buildable" data-item-type="layout-column" ><div class="componentTitle">Column</div><div class="icon-remove">X</div></div>
+
+        </div> <!-- end layout palette -->
 
 
-    <div class="layout-row buildable" data-item-type="layout-row" ><div class="componentTitle">Row</div><div class="icon-remove">X</div></div>
-    <div class="layout-column buildable" data-item-type="layout-column" ><div class="componentTitle">Column</div><div class="icon-remove">X</div></div>
-    <div class="form buildable"   data-item-type="form"><div class="componentTitle">Form</div><div class="icon-remove">X</div></div>
-    <div class="field buildable"  data-item-type="field"><div class="componentTitle">Field</div><div class="icon-remove">X</div></div>
-    <div class="layout buildable" data-item-type="layout"><div class="componentTitle">Layout</div><div class="icon-remove">X</div></div>
-    <div class="view buildable"   data-item-type="view"><div class="componentTitle">View</div><div class="icon-remove">X</div></div>
-    <div class="image buildable"  data-item-type="image"><div class="componentTitle">Image</div><div class="icon-remove">X</div></div>
-    <div class="text buildable"   data-item-type="text"><div class="componentTitle">Text</div><div class="icon-remove">X</div></div>
+        <!-- COMPONENT PALETTE -->
 
-  </div>
+        <div id="componentPalette" class="palette"> 
 
-  <!-- Droppable Container -->
+            <div class="paletteTitle">Component Palette</div>
+
+            <div class="nav buildable" data-item-type="nav">
+            <div class="componentTitle">Nav</div>
+            <div class="icon-remove invisible" onclick="removeItem($(this).parent().attr('id'))">X</div>
+            </div>
+
+            <div class="outlet buildable" data-item-type="outlet">
+            <div class="componentTitle">Outlet</div>
+            <div class="icon-remove">X</div>
+            </div>
+
+
+            <div class="layout-row buildable" data-item-type="layout-row" ><div class="componentTitle">Row</div><div class="icon-remove">X</div></div>
+            <div class="layout-column buildable" data-item-type="layout-column" ><div class="componentTitle">Column</div><div class="icon-remove">X</div></div>
+            <div class="form buildable"   data-item-type="form"><div class="componentTitle">Form</div><div class="icon-remove">X</div></div>
+            <div class="field buildable"  data-item-type="field"><div class="componentTitle">Field</div><div class="icon-remove">X</div></div>
+            <div class="layout buildable" data-item-type="layout"><div class="componentTitle">Layout</div><div class="icon-remove">X</div></div>
+            <div class="view buildable"   data-item-type="view"><div class="componentTitle">View</div><div class="icon-remove">X</div></div>
+            <div class="image buildable"  data-item-type="image"><div class="componentTitle">Image</div><div class="icon-remove">X</div></div>
+            <div class="text buildable"   data-item-type="text"><div class="componentTitle">Text</div><div class="icon-remove">X</div></div>
+
+        </div> <!-- end component palette -->
+
+    </div> <!-- end menu -->
+
+  <!-- === WORKSPACE === -->
   <div id="workspace" class="droppable">
-    <div class="componentMenuTitle">Workspace</div>
-  </div>
 
-  </body>
+    <div id="workspaceTitle">Workspace</div>
+
+  </div> <!-- end workspace -->
+
+</div> <!-- end page -->
+
+</body>
 </html>
