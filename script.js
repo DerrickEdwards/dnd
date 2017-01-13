@@ -1,4 +1,9 @@
 
+
+const   GRID_SPACING = 40;
+
+
+
 // ============================================================================
 // ============================================================================
 function initComponentsInMenu(){
@@ -7,7 +12,7 @@ function initComponentsInMenu(){
     $( ".buildable" ).draggable({
         handle: ".componentTitle",
         helper: "clone",      // display a clone of the original item while it is being dragged.
-        grid: [ 20, 20 ],     // snap to a 20x20px grid
+        grid: [ GRID_SPACING, GRID_SPACING ],     // snap to a 20x20px grid
         opacity: 0.7,         // set opacity of cloned helper while it is being dragged
         revert: "invalid"     // return to original position of not successfully dropped
         });
@@ -17,20 +22,6 @@ function initComponentsInMenu(){
         accept: ".layout-row, .layout-column",  // only accept droppable items with these classes, other selectors can be added
         drop:   handleDroppedItem
         } ) // end .droppable
-
-    // >>>>>>>>>>>>>>>>>>>>>>>>>> leave these turned off until the redraggable issue is fixed
-    // $( ".layout-row" ).droppable( {
-    //     accept: ".outlet, .nav, .layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
-    //     drop:   function(event, ui){ 
-    //       console.log( "layout-row dropped" );
-    //       cloneDroppedItem( event, ui );                         // call the "drop" function and pass the event and ui parameters           
-    //     } 
-    //   } ) // end .droppable
-
-    // $( ".layout-column" ).droppable( {
-    //     accept: ".outlet, .nav, .layout-row, .layout-column",  // only accept droppable items with the class ".outlet", other selectors can be added
-    //     drop:   function(event, ui){ cloneDroppedItem( event, ui )} // call the "drop" function and pass the event and ui parameters
-    //   } ) // end .droppable
 
 } // end initCompoentsInMenu()
 
@@ -42,6 +33,18 @@ function removeItem( item ){
     console.log( "removeItem() called: " + item.id );
     $( item ).remove();  // remove the DOM element with the given id
 } // end removeItem()
+
+
+// ============================================================================
+// Create a new row object to be placed when the row component is dropped
+// ============================================================================
+ function createRow(){
+
+     var $row = $( "<div></div>");
+     $row.addClass( "placedItem" ); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start here
+     return $row;
+
+ } // end createRow()
     
     
 // ============================================================================
@@ -65,7 +68,7 @@ function handleDroppedItem( event, ui ){
         $clone.draggable({                  // make it draggable
             handle: ".componentTitle",
             helper: "original",   // drag the original around and not a clone since this is a placed object.
-            grid: [ 20, 20 ],     // snap to a 20x20px grid
+            grid: [ GRID_SPACING, GRID_SPACING ],     // snap to a 20x20px grid
             opacity: 0.7,         // set opacity of cloned helper while it is being dragged
             revert: "invalid"     // return to original position of not successfully dropped
         });
@@ -73,11 +76,8 @@ function handleDroppedItem( event, ui ){
         $clone.find( ".icon-remove" ).click( function(){ removeItem( $clone ) });  // add event handler to the "remove item" icon
 
         $clone.resizable({      // make it resizable
-            grid: [ 20, 20 ]    // snap to a 20x20px grid
+            grid: [ GRID_SPACING, GRID_SPACING ]    // snap to a 20x20px grid
         });
-
-
-
 
         $(this).append( $clone );
         // $clone.appendTo( event.target );     // append a clone of the dragged element to the target droppable container

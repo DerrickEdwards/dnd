@@ -20,11 +20,12 @@ body {
 }
 
 #menu {
-    border:     1px dotted blue;
-    display:    inline-block;
-    height:     100%;
-    padding:    5px;
-    width:      var( --menuWidth );
+    border:         1px dotted blue;
+    display:        inline-block;
+    height:         95%;
+    padding:        5px;
+    width:          var( --menuWidth );
+    vertical-align: top;
 }
 
 #menuTitle {
@@ -35,15 +36,17 @@ body {
 #workspace {
     border:     2pt dashed var( --gstars-blue );
     display:    inline-block;
-    height:    100%;
+    height:    95%;
     padding:    5px;
     width:      var( --workspaceWidth );
     min-width:  200px;
+    vertical-align: top;
+    
 }
 
 #workspaceTitle {
-    font-size: 14pt;
-    font-weight: bold;
+    font-size:      14pt;
+    font-weight:    bold;
 }
 
 .buildable, .placedItem {

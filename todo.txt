@@ -1,6 +1,8 @@
 
 
+=== Thursday January 12
 
+createRow function is being added to create and return the "replace" layout row
 
 === Wednesday January 11
 The removeItem() function is not finding the id of the $clone item passed to it so that it can be logged.
