@@ -1,6 +1,7 @@
 
 
 const   GRID_SPACING = 40;
+const   GRID_ROW_HEIGHT = 80px;
 
 
 
@@ -19,7 +20,7 @@ function initComponentsInMenu(){
 
 
     $( "#workspace" ).droppable( {
-        accept: ".layout-row, .layout-column",  // only accept droppable items with these classes, other selectors can be added
+        accept: ".palette-item-row, .palette-item-column",  // only accept droppable items with these classes, other selectors can be added
         drop:   handleDroppedItem
         } ) // end .droppable
 
@@ -37,11 +38,28 @@ function removeItem( item ){
 
 // ============================================================================
 // Create a new row object to be placed when the row component is dropped
+// In this example we are only building just a single, two column/cell row
+//
+// @TODO: add parameter to allow the number of cells to be passed in
+// @TODO: refactor the draggable code from the handleDroppedItem into here
 // ============================================================================
+
  function createRow(){
 
-     var $row = $( "<div></div>");
-     $row.addClass( "placedItem" ); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start here
+     var i = 0;
+     var cellCount = 2;
+
+     var $row = $( "<div></div>" );     // create the layout row
+     $row.addClass( "buildable" );      // let the drop event know this is a new object to be configured.
+     $row.addClass( "layout-row" );     
+     
+     for (i=0; i<cellCount; i++){
+        var $cell = $( "<div ></div>" );
+        $cell.addClass( "cell-col-6" );     // 6 column wide cell
+        $cell.append( "cell col 6" );       // put a string in the cell so we can see the name for debugging
+        $row.append( $cell );
+     } // end if
+
      return $row;
 
  } // end createRow()
@@ -53,15 +71,17 @@ function removeItem( item ){
 
 function handleDroppedItem( event, ui ){ 
 
-    var $clone = $(ui.helper).clone();  //  clone the helper object.  ui.helper has position attributes 
+    // var $clone = $(ui.helper).clone();  //  clone the helper object.  ui.helper has position attributes 
     
+    var $clone = createRow();  // get a display object for the row
+
     // if the dropped item is a "buildable" item being dropped for the first time, 
     //  reconfigure it as a "placedItem" 
     
     if ($clone.hasClass( "buildable" )){
 
         $clone.removeClass( "buildable" );  // turn off the buildable class
-        $clone.addClass( "placedItem" );    // make the object one that IS placed item instead of one that CAN be placed
+    //    $clone.addClass( "placedItem" );    // make the object one that IS placed item instead of one that CAN be placed
         
         $clone.attr( "id", guid32() );      // give the cloned item a new GUID
         
@@ -92,7 +112,7 @@ function handleDroppedItem( event, ui ){
     } // end if placedItem
 
 
-} // end handleDropppedItem()
+} // end handleDroppedItem()
 
 
 // ============================================================================

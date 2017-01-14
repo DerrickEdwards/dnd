@@ -1,3 +1,11 @@
+/* reset the box model, see https://css-tricks.com/box-sizing/ */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 :root {
     --gstars-blue:          #0000aa;
     --pageHeight:           800px;
@@ -5,7 +13,32 @@
     --menuWidth:            200px;
     --workspaceWidth:       calc( 100% - var(--paletteWidth) - 10% ); /* compute to be remailing space minus 10% to avoid wrapping */
     --paletteWidth:         150px;
+
 }
+
+.layout-row {
+    background-color:   lightskyblue;
+    border:             1px solid black;
+    height:             80px;
+    padding:            5px;
+    width:              100%;
+
+    display:            flex;
+    justify-content:    space-around;
+    align-items:        center;
+}
+
+
+.cell-col-6 {
+    background-color:   white;
+    border:     1px solid black;
+    xdisplay:    inline-block;
+    height:     80%;
+    margin:     5px;
+    padding:    5px;
+    width:      50%;
+}
+
 
 body {
     font-family: "segoe ui light", "arial", "sans serif";
@@ -13,19 +46,31 @@ body {
 
 #page {
     border:     2px solid black;
+    display:    flex;
     height:     var( --pageHeight );
     padding:    5px;
     width:      100%;
     min-width:  200px;
 }
 
+#banner {
+    border:         1px solid black;
+    height:         80px;
+    padding:        10px;
+    width:          100%;
+}
+
+#bannerTitle {
+    font-size:      14pt;
+}
+
+
 #menu {
     border:         1px dotted blue;
-    display:        inline-block;
     height:         95%;
     padding:        5px;
     width:          var( --menuWidth );
-    vertical-align: top;
+    xvertical-align: top;
 }
 
 #menuTitle {
@@ -35,12 +80,11 @@ body {
 
 #workspace {
     border:     2pt dashed var( --gstars-blue );
-    display:    inline-block;
     height:    95%;
     padding:    5px;
     width:      var( --workspaceWidth );
     min-width:  200px;
-    vertical-align: top;
+    xvertical-align: top;
     
 }
 
@@ -59,7 +103,6 @@ body {
 
 .palette {
     border:     1pt solid var( --gstars-blue );
-    display:    inline-block;
     height:     auto;
     padding:    5px;
     width:      80%;
@@ -80,5 +123,4 @@ body {
 
 
 #menu .buildable {
-    display:    inline-block;
 }
