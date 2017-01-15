@@ -1,76 +1,77 @@
-/* reset the box model, see https://css-tricks.com/box-sizing/ */
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
 
 :root {
     --gstars-blue:          #0000aa;
-    --pageHeight:           800px;
+
+    --defaultGridHeight:    80px;
+
+    --pageHeight:           100%;
     --pageWidth:            auto;
-    --menuWidth:            200px;
-    --workspaceWidth:       calc( 100% - var(--paletteWidth) - 10% ); /* compute to be remailing space minus 10% to avoid wrapping */
-    --paletteWidth:         150px;
+    --pageMinWidth:         400px;
 
+    --bannerHeight:         80px;
+    --bannerWidth:          100%;
+
+    --menuHeight:           calc( 100% - var( --bannerHeight ));
+    --menuWidth:            160px;
+
+    --workspaceHeight:      var( --menuHeight );
+    --workspaceWidth:       calc( 100% - var( --menuWidth ));
+
+    --paletteWidth:         100%;
+    --paletteHeight:        auto;
 }
 
-.layout-row {
-    background-color:   lightskyblue;
-    border:             1px solid black;
-    height:             80px;
-    padding:            5px;
-    width:              100%;
-
-    display:            flex;
-    justify-content:    space-around;
-    align-items:        center;
+/* reset the box model, see https://css-tricks.com/box-sizing/ */
+html {
+  box-sizing:       border-box;
+  height:           100%;
 }
-
-
-.cell-col-6 {
-    background-color:   white;
-    border:     1px solid black;
-    xdisplay:    inline-block;
-    height:     80%;
-    margin:     5px;
-    padding:    5px;
-    width:      50%;
+*, *:before, *:after {
+  box-sizing:       inherit;
 }
-
 
 body {
-    font-family: "segoe ui light", "arial", "sans serif";
+    font-family:    "segoe ui light", "arial", "sans serif";
+    height:         100%;
 }
 
 #page {
-    border:     2px solid black;
-    display:    flex;
-    height:     var( --pageHeight );
-    padding:    5px;
-    width:      100%;
-    min-width:  200px;
+    border:         1px solid black;
+    display:        flex;
+    flex-direction: row;
+    flex-wrap:      wrap;
+    height:         var( --pageHeight );
+    min-width:      var( --pageMinWidth );
+    padding:        5px;
+    width:          var( --pageWidth );
 }
 
 #banner {
-    border:         1px solid black;
-    height:         80px;
+    border-color:   var( --gstars-blue );
+    border-style:   solid;
+    border-width:   1px 1px 1px 1px;
+    display:        flex;
+    flex-direction: row;
+    flex-wrap:      wrap;    
+    height:         var( --bannerHeight );
     padding:        10px;
-    width:          100%;
+    width:          var( --bannerWidth );
 }
 
 #bannerTitle {
     font-size:      14pt;
 }
 
-
 #menu {
-    border:         1px dotted blue;
-    height:         95%;
-    padding:        5px;
+    border-color:   var( --gstars-blue );
+    border-style:   solid;
+    border-width:   0px 0px 1px 1px;
+    display:        flex;
+    flex-direction: column;
+    flex-wrap:      nowrap;     
+    height:         var( --menuHeight );
+    xpadding:        5px;
     width:          var( --menuWidth );
-    xvertical-align: top;
 }
 
 #menuTitle {
@@ -79,13 +80,19 @@ body {
 }
 
 #workspace {
-    border:     2pt dashed var( --gstars-blue );
-    height:    95%;
-    padding:    5px;
-    width:      var( --workspaceWidth );
-    min-width:  200px;
-    xvertical-align: top;
-    
+    border-color:   var( --gstars-blue );
+    border-style:   solid;
+    border-width:   0px 1px 1px 1px;
+
+    justify-content: flex-start;
+    display:        flex;
+    flex-direction: column;
+    flex-wrap:      nowrap;        
+
+    height:         var( --workspaceHeight );
+    padding:        5px;
+    width:          var( --workspaceWidth );
+    min-width:      200px;    
 }
 
 #workspaceTitle {
@@ -93,19 +100,43 @@ body {
     font-weight:    bold;
 }
 
-.buildable, .placedItem {
+.palette {
+    border:     0pt solid var( --gstars-blue );
+    height:     var( --paletteHeight );
+    padding:    5px;
+    width:      var( --paletteWidth );
+}
+
+
+.layout-row {
+    background-color:   lightskyblue;
+    border:             1px solid var( --gstars-blue );
+    height:             var( --defaultGridHeight );
+    padding:            5px;
+    width:              100%;
+
+    align-items:        center;
+    display:            flex;
+    flex-direction:     row;
+    flex-wrap:          nowrap;
+    justify-content:    space-around;
+}
+
+.cell-col-6 {
+    background-color:   white;
+    border:     1px solid black;
+    height:     80%;
+    margin:     5px;
+    padding:    5px;
+    width:      50%;
+}
+
+.paletteItem {
     border: 1px solid var( --gstars-blue );
     height: 20pt;
     margin: 5pt;
     padding: 2pt;
     width: 75pt;
-}
-
-.palette {
-    border:     1pt solid var( --gstars-blue );
-    height:     auto;
-    padding:    5px;
-    width:      80%;
 }
 
 .componentTitle {
@@ -122,5 +153,4 @@ body {
 }
 
 
-#menu .buildable {
-}
+

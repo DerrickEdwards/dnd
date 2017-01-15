@@ -1,8 +1,9 @@
 
 
-=== Thursday January 12
+=== Sunday January 15
+The "page" element is still a few pixels longer than the viewport and is invoking a scroll bar.
 
-createRow function is being added to create and return the "replace" layout row
+Cannot get the "move" cursor to show when the draggable element is clicked on (sometimes).
 
 === Wednesday January 11
 The removeItem() function is not finding the id of the $clone item passed to it so that it can be logged.
@@ -11,11 +12,7 @@ The removeItem() function is not finding the id of the $clone item passed to it 
     Look at the "item" being passed into the function and you will see that the "id" is there but seems to be part of the first child.
 
 
-v=== very next thing
 
-When the component is dropped change it to be the workspace object.  the components on the palette are just supposed to be representations of the objects.  
-For example, the components in this first phase should represent layout objects such as single col rows, double column rows, x-col rows.  
-Later there will be an actual components list to drop into the cells in the rows.
 
 === future stuff ===
 

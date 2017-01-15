@@ -1,7 +1,7 @@
 
 
-const   GRID_SPACING = 40;
-const   GRID_ROW_HEIGHT = 80px;
+const   GRID_SPACING = 80;
+const   GRID_ROW_HEIGHT = 80;
 
 
 
@@ -11,11 +11,11 @@ function initComponentsInMenu(){
     console.log( "initComponentsInMenu() called");
 
     $( ".buildable" ).draggable({
-        handle: ".componentTitle",
+        cursor: "move",
         helper: "clone",      // display a clone of the original item while it is being dragged.
-        grid: [ GRID_SPACING, GRID_SPACING ],     // snap to a 20x20px grid
+        grid: [ GRID_SPACING, GRID_SPACING ],     // move snap to a grid
         opacity: 0.7,         // set opacity of cloned helper while it is being dragged
-        revert: "invalid"     // return to original position of not successfully dropped
+        revert: "invalid"     // return to original position if not successfully dropped
         });
 
 
