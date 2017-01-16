@@ -131,7 +131,7 @@ body {
     width:      50%;
 }
 
-.paletteItem {
+[class*="palette-item-"] {  /* every element where class contains "palette-item-ttt..." */
     border: 1px solid var( --gstars-blue );
     height: 20pt;
     margin: 5pt;

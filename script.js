@@ -10,7 +10,7 @@ const   GRID_ROW_HEIGHT = 80;
 function initComponentsInMenu(){
     console.log( "initComponentsInMenu() called");
 
-    $( ".buildable" ).draggable({
+    $( "[class*='palette-item-']" ).draggable({
         cursor: "move",
         helper: "clone",      // display a clone of the original item while it is being dragged.
         grid: [ GRID_SPACING, GRID_SPACING ],     // move snap to a grid
@@ -75,42 +75,28 @@ function handleDroppedItem( event, ui ){
     
     var $clone = createRow();  // get a display object for the row
 
-    // if the dropped item is a "buildable" item being dropped for the first time, 
-    //  reconfigure it as a "placedItem" 
+    $clone.removeClass( "buildable" );  // turn off the buildable class
+//    $clone.addClass( "placedItem" );    // make the object one that IS placed item instead of one that CAN be placed
     
-    if ($clone.hasClass( "buildable" )){
+    $clone.attr( "id", guid32() );      // give the cloned item a new GUID
+    
+    $clone.draggable({                  // make it draggable
+        handle: ".componentTitle",
+        helper: "original",   // drag the original around and not a clone since this is a placed object.
+        grid: [ GRID_SPACING, GRID_SPACING ],     // snap to a 20x20px grid
+        opacity: 0.7,         // set opacity of cloned helper while it is being dragged
+        revert: "invalid"     // return to original position of not successfully dropped
+    });
 
-        $clone.removeClass( "buildable" );  // turn off the buildable class
-    //    $clone.addClass( "placedItem" );    // make the object one that IS placed item instead of one that CAN be placed
-        
-        $clone.attr( "id", guid32() );      // give the cloned item a new GUID
-        
-        $clone.draggable({                  // make it draggable
-            handle: ".componentTitle",
-            helper: "original",   // drag the original around and not a clone since this is a placed object.
-            grid: [ GRID_SPACING, GRID_SPACING ],     // snap to a 20x20px grid
-            opacity: 0.7,         // set opacity of cloned helper while it is being dragged
-            revert: "invalid"     // return to original position of not successfully dropped
-        });
+   // $clone.find( ".icon-remove" ).click( function(){ removeItem( $clone ) });  // add event handler to the "remove item" icon
 
-        $clone.find( ".icon-remove" ).click( function(){ removeItem( $clone ) });  // add event handler to the "remove item" icon
+    // $clone.resizable({      // make it resizable
+    //     grid: [ GRID_SPACING, GRID_SPACING ]    // snap to a 20x20px grid
+    // });
 
-        $clone.resizable({      // make it resizable
-            grid: [ GRID_SPACING, GRID_SPACING ]    // snap to a 20x20px grid
-        });
-
-        $(this).append( $clone );
-        // $clone.appendTo( event.target );     // append a clone of the dragged element to the target droppable container
-        itemAdded( $clone.attr( "id" ));        // log the new item
-
-    } // end if buildable
-
-
-    // if the dropped item is a "placedItem" do nothing for the moment
-    if ( $clone.hasClass( "placedItem" )){
-
-    } // end if placedItem
-
+    $(this).append( $clone );
+    // $clone.appendTo( event.target );     // append a clone of the dragged element to the target droppable container
+    itemAdded( $clone.attr( "id" ));        // log the new item
 
 } // end handleDroppedItem()
 
