@@ -18,11 +18,15 @@ function initComponentsInMenu(){
         revert: "invalid"     // return to original position if not successfully dropped
         });
 
-
     $( "#workspace" ).droppable( {
         accept: ".palette-item-row, .palette-item-column",  // only accept droppable items with these classes, other selectors can be added
         drop:   handleDroppedItem
         } ) // end .droppable
+
+    $( "#workspace" ).sortable({
+        forcePlaceholderSize:   true,
+        placeholder:            "row-drop-placeholder"
+    });
 
 } // end initCompoentsInMenu()
 

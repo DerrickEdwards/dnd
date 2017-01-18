@@ -145,6 +145,13 @@ body {
     font-weight:    normal;
 }
 
+.row-drop-placeholder {
+    background-color:   yellow;
+    height:             var(--defaultGridHeight );
+    width:              100%;
+
+}
+
 .icon-remove {
     cursor: pointer;
     font-weight: bold;
