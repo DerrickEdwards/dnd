@@ -1,11 +1,19 @@
 
 
-=== Sunday January 15
+
+>>> connectToSortable now working as desired.  It drops the helper object regardless of what the drop event handler wants to do.
+
+
+
+
+
+
+
+--- BUGS
 The "page" element is still a few pixels longer than the viewport and is invoking a scroll bar.
 
 Cannot get the "move" cursor to show when the draggable element is clicked on (sometimes).
 
-=== Wednesday January 11
 The removeItem() function is not finding the id of the $clone item passed to it so that it can be logged.
     I am not sure what the JQuery object being passed ($clone) really is, but it seems from the debugger that the html element is child of the object so 
     it may be necessary to do a $clone.find( xxxx ), where "xxxx" is something, to find the element with and then the id within the object.

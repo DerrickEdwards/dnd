@@ -11,10 +11,12 @@ function initComponentsInMenu(){
     console.log( "initComponentsInMenu() called");
 
     $( "[class*='palette-item-']" ).draggable({
-        cursor: "move",
-        helper: "clone",      // display a clone of the original item while it is being dragged.
+        connectToSortable: "#workspace",
+        containment: "#workspace #menu",
+        cursor: "auto",
+        helper: function(){ return $( "<div class='customHelper'></div>") },
         grid: [ GRID_SPACING, GRID_SPACING ],     // move snap to a grid
-        opacity: 0.7,         // set opacity of cloned helper while it is being dragged
+        // opacity: 0.7,         // set opacity of cloned helper while it is being dragged
         revert: "invalid"     // return to original position if not successfully dropped
         });
 
@@ -29,6 +31,16 @@ function initComponentsInMenu(){
     });
 
 } // end initCompoentsInMenu()
+
+
+// ============================================================================
+// ============================================================================
+
+function customHelper(){
+
+    
+
+} // end customHelper()
 
 
 // ============================================================================

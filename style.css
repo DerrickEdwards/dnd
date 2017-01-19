@@ -160,4 +160,10 @@ body {
 }
 
 
+.customHelper {
+    border:     1px solid var( --gstars-blue );
+    height:     var( --defaultGridHeight );
+    width:      calc( var( --workspaceWidth ) - 10% );
+}
+
 
