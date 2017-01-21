@@ -14,21 +14,22 @@ function initComponentsInMenu(){
         connectToSortable: "#workspace",
         containment: "#workspace #menu",
         cursor: "auto",
-        helper: function(){ return $( "<div class='customHelper'></div>") },
+        helper: "clone",        
+        // helper: function(){ return $( "<div class='customHelper'></div>") },
         grid: [ GRID_SPACING, GRID_SPACING ],     // move snap to a grid
         // opacity: 0.7,         // set opacity of cloned helper while it is being dragged
         revert: "invalid"     // return to original position if not successfully dropped
         });
 
-    $( "#workspace" ).droppable( {
-        accept: ".palette-item-row, .palette-item-column",  // only accept droppable items with these classes, other selectors can be added
-        drop:   handleDroppedItem
-        } ) // end .droppable
-
     $( "#workspace" ).sortable({
         forcePlaceholderSize:   true,
         placeholder:            "row-drop-placeholder"
     });
+
+    $( "#workspace" ).droppable( {
+        accept: ".palette-item-row, .palette-item-column",  // only accept droppable items with these classes, other selectors can be added
+        drop:   handleDroppedItem
+        } ) // end .droppable
 
 } // end initCompoentsInMenu()
 
@@ -66,7 +67,6 @@ function removeItem( item ){
      var cellCount = 2;
 
      var $row = $( "<div></div>" );     // create the layout row
-     $row.addClass( "buildable" );      // let the drop event know this is a new object to be configured.
      $row.addClass( "layout-row" );     
      
      for (i=0; i<cellCount; i++){
@@ -90,9 +90,6 @@ function handleDroppedItem( event, ui ){
     // var $clone = $(ui.helper).clone();  //  clone the helper object.  ui.helper has position attributes 
     
     var $clone = createRow();  // get a display object for the row
-
-    $clone.removeClass( "buildable" );  // turn off the buildable class
-//    $clone.addClass( "placedItem" );    // make the object one that IS placed item instead of one that CAN be placed
     
     $clone.attr( "id", guid32() );      // give the cloned item a new GUID
     
